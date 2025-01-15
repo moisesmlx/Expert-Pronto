@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifra</title>
+</head>
+<body>
+    <div style="text-align: center; color: blue; background-color: aquamarine;">
+
+        <div>
+    
+            <script>
+                alert("Ok! {{nome}} convertido para {{new_tom}}");
+            </script>
+            <h2>Pronto sua cifra já foi convertida para {{new_tom}}</h2><br>
+            <p style="color: brown;">Agora voçê pode usar o mause para selecionar sua cifra abaixo <br>
+            ou dar um click dentro da caixa de texto <br>
+            e dar um <font color="green">CTRL+A</font> para selecionar e depois um <font color="green">CTRL+C</font> para copiar<br> 
+            e colar em quaquer editor de texto.</p>
+            Se preferir pode enviar direto para seu email.
+            
+            <form method="post">
+                {% csrf_token %}
+                <textarea name="cifra_n" id="cifra_n1" rows="5", cols="100" style="color: blue;">{{new_cifra}}</textarea><br>
+                <button type="button" class="btn btn-secondary btn-lg" onclick="copy()" style="background-color: darkslategray;">Copiar Cifra</button><br>
+
+                    {% csrf_token %}
+                    <a href="{% url 'enviar_email' %}">Enviar por Email</a>
+            </form>
+            <a href="{{BASE_DIR}}/Minhas_cifras/{{nome_cifra}}.txt" download="{{nome_cifra}}.txt">Download</a>
+            <div style="border: 4px;"><pre style="color:green;font-size: 20px;">{{new_cifra}}</pre></div>
+    
+        </div>
+        <script>
+            const textarea = document.querySelector('textarea');
+    
+            function copy(){
+                navigator.clipboard.writeText(textarea.value);
+                alert("Sua Cifra foi copiada para área de transferência");
+            };
+            function voltar(){
+			if(performance.navigation.type == 2){
+			location.reload(true)};
+            window.location.reload(forcedReload)};
+			
+
+        </script>
+        
+        <button onclick="voltar()" style="background-color:aquamarine;"><a href="javascript: history.go(-1)">Voltar</a></button>
+        
+    </div>
+</body>
+</html>

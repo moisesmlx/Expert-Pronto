@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert em Cifras</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body style="background-color:lightblue;color: black;">
+    <img src="static/logo.png"  class= "img-responsive" alt="logo" width="350" height="150">
+
+    <form action="{% url 'expertEmCifras' %}" method="post">
+        {% csrf_token %}
+        <div>
+            <h2>Digite as informações abaixo</h2>
+            <h2 style="color: orangered;background-color: black;">Observacão: Nosso sistema não indentifica tom bemol, por isso:
+            <br>se tiver alguma cifra com tom bemol, não digitar como bemol.<br>
+            Veja como podes digitar: Se for Bb digite A#, se for Eb digite D#, e assim sucessivamente. </h2>
+
+            Antes de tudo digite seu nome aqui ou apelído: <input type="text" placeholder="Digite nome" name="id" required><br><br>
+
+            Digite seu email aqui <input type="email" name="email" id="email" placeholder="digite seu email aqui" required><br><br>
+
+            Tom original <input type="text" placeholder="Digite tom original" name="original" required>
+            Novo tom <input type="text" placeholder="digite novo tom" name="novo"required>
+            Dê um nome à cifra <input type="text" placeholder="digite o nome aqui" name="nome_cifra"required>          
+        </div><br>
+        
+        Click na caixa abaixo e cole sua cifra depois click em start 
+        <br>para colar segure no teclado CTRL+V<br>
+
+        <textarea name="cifra" placeholder="Cole sua cifra aqui 'ctrl + v'" cols="50" rows="15" style="color: blue;" required></textarea><br>
+        <br>
+        <button type="submit" class="btn btn-secondary btn-lg" style="background-color: chartreuse;">   Start   </button>
+    </form>
+    
+</body>
+</html>
